@@ -1,25 +1,36 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Home from './components/home';
+import Search from './components/search';
+import Shopcar from './components/shopcar';
+import Member from './components/member';
 
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-  ]
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: [
+        {
+            path: '/home',
+            name: 'home',
+            component: Home
+        },
+        {
+            path: '/search',
+            name: 'search',
+            component: Search
+        },
+        {
+            path: '/shopcar',
+            name: 'shopcar',
+            component: Shopcar
+        },
+        {
+            path: '/member',
+            name: 'member',
+            component: Member
+        }
+    ],
+    linkActiveClass: 'mui-active'
 })
