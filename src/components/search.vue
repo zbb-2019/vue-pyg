@@ -10,6 +10,10 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
+    div {
+        margin-top: 40px;
+    }
 
 </style>

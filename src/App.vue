@@ -3,14 +3,10 @@
         <!--顶部区域-->
         <mt-header fixed title="vue，品优购项目开发"></mt-header>
 
-        <mt-swipe :auto="4000">
-            <mt-swipe-item>1</mt-swipe-item>
-            <mt-swipe-item>2</mt-swipe-item>
-            <mt-swipe-item>3</mt-swipe-item>
-        </mt-swipe>
-
         <!--中间路由区域-->
-        <RouterView></RouterView>
+        <transition mode="out-in">
+            <RouterView></RouterView>
+        </transition>
         <!--底部区域-->
         <nav class="mui-bar mui-bar-tab">
             <router-link class="mui-tab-item" to="/home">
@@ -34,5 +30,20 @@
 </template>
 
 <style lang="scss">
+    div {
+        overflow-x: hidden;
+        .v-enter, .v-leave-to {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        .v-leave-to {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        .v-enter-active, .v-leave-active {
+            transition: all .5s ease;
+        }
+    }
 
 </style>
