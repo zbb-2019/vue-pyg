@@ -8,10 +8,12 @@
 
 
         <ul class="mui-table-view mui-grid-view mui-grid-9">
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-                <img src="../../public/img/icons/apple-touch-icon-120x120.png">
-                <div class="mui-media-body">新闻资讯</div>
-            </a></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/news-list">
+                    <img src="../../public/img/icons/apple-touch-icon-120x120.png">
+                    <div class="mui-media-body">新闻资讯</div>
+                </router-link>
+            </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                 <img src="../../public/img/icons/apple-touch-icon-120x120.png">
                 <div class="mui-media-body">图片分享</div>
@@ -40,7 +42,7 @@
     import {Toast} from 'mint-ui';
 
     export default {
-        name: "home",
+        name: "Home",
         created() {
             this.getLunBoTu();
         },
@@ -52,7 +54,7 @@
         methods: {
             getLunBoTu() { //获取轮播图数据接口
                 console.log('获取轮播图数据接口');
-                this.$http.get("http://192.168.5.211:7001/api/v1/lunbotu").then(result => {
+                this.$http.get("api/v1/lunbotu").then(result => {
                     console.log(result)
                     if (result.status === 200) {
                         //成功了
@@ -71,7 +73,6 @@
 <style scoped lang="scss">
     .mint-swipe {
         height: 200px;
-        margin-top: 40px;
 
         .mint-swipe-item {
             &:nth-child(1) {

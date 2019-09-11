@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './components/home';
-import Search from './components/search';
-import Shopcar from './components/shopcar';
-import Member from './components/member';
+import Home from './components/Home';
+import Search from './components/Search';
+import Shopcar from './components/Shopcar';
+import Member from './components/Member';
+import NewsList from './components/NewsList';
+import NewsInfo from './components/NewsInfo';
 
 Vue.use(Router)
 
@@ -17,22 +19,32 @@ export default new Router({
         },
         {
             path: '/home',
-            name: 'home',
-            component: Home
+            name: 'Home',
+            component: Home,
+        },
+        {
+            path: '/home/news-list',
+            name: 'NewsList',
+            component: NewsList,
+        },
+        {
+            path: '/home/news-info/:id',
+            name: 'NewsInfo',
+            component: NewsInfo,
         },
         {
             path: '/search',
-            name: 'search',
+            name: 'Search',
             component: Search
         },
         {
             path: '/shopcar',
-            name: 'shopcar',
+            name: 'Shopcar',
             component: Shopcar
         },
         {
             path: '/member',
-            name: 'member',
+            name: 'Member',
             component: Member
         }
     ],

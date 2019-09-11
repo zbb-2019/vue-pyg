@@ -30,6 +30,10 @@
 </template>
 
 <style lang="scss">
+    #app{
+        padding-top: 40px;
+        padding-bottom: 50px;
+    }
     div {
         overflow-x: hidden;
         .v-enter, .v-leave-to {
