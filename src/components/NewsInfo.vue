@@ -7,11 +7,14 @@
         </p>
         <hr/>
         <p>{{news.content}}</p>
+
+        <news-comment></news-comment>
     </div>
 </template>
 <!--api/v1/news/1-->
 <script>
     import {Toast} from 'mint-ui';
+    import Comment from './Comment.vue'
 
     export default {
         name: "NewsInfo",
@@ -38,6 +41,9 @@
                     }
                 });
             }
+        },
+        components: {
+            "news-comment": Comment
         }
     }
 </script>
@@ -45,12 +51,14 @@
 <style scoped lang="scss">
     .news-info-container {
         padding: 0 4px;
+
         .title {
             font-size: 16px;
             text-align: center;
             margin: 15px 0;
             color: red;
         }
+
         .subtitle {
             font-size: 12px;
             color: #226aff;
