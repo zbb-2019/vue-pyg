@@ -13,9 +13,25 @@ import './lib/mui/css/icons-extra.css';
 //导入vue-resource
 import VueResource from 'vue-resource';
 import moment from 'moment';
-
+import VuePreview from 'vue-preview'
 Vue.use(MintUI);
 Vue.use(VueResource);
+
+
+// defalut install
+Vue.use(VuePreview)
+
+// with parameters install
+// Vue.use(preview, {
+//     mainClass: 'pswp--minimal--dark',
+//     barsSize: {top: 0, bottom: 0},
+//     captionEl: false,
+//     fullscreenEl: false,
+//     shareEl: false,
+//     bgOpacity: 0.85,
+//     tapToClose: true,
+//     tapToToggleControls: false
+// })
 
 Vue.http.options.root = 'http://192.168.5.211:7001/';
 
