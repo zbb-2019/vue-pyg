@@ -9,7 +9,7 @@
         <mt-button type="primary" size="large" @click="saveComment">发表评论</mt-button>
 
         <ul>
-            <li v-for="(item, index) in comments" :key="item.id">
+            <li v-for="(item, index) in comments" :key="index">
                 <div>
                     第{{index+1}}楼&nbsp;&nbsp;用户名id：{{item.user_id}}&nbsp;&nbsp;时间：{{item.add_time | dateFromat()}}
                 </div>
