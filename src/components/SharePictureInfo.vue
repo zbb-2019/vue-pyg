@@ -12,11 +12,13 @@
             <vue-preview :slides="slide1" @close="handleClose"></vue-preview>
         </div>
         <p>{{sharepictureinfo.content}}</p>
+        <news-comment :type="2"></news-comment>
     </div>
 </template>
 
 <script>
     import {Toast} from 'mint-ui'
+    import Comment from './Comment.vue'
 
     export default {
         name: "SharePictureInfo",
@@ -71,6 +73,9 @@
                     }
                 });
             }
+        },
+        components: {
+            "news-comment": Comment
         }
     }
 </script>

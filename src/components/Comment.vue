@@ -4,14 +4,14 @@
 
         <hr/>
 
-        <textarea placeholder="请开始你的BB（限制输入120字）" maxlength="120"></textarea>
+        <textarea placeholder="请开始你的BB（限制输入120字）" maxlength="120" v-model="contents"></textarea>
 
-        <mt-button type="primary" size="large">发表评论</mt-button>
+        <mt-button type="primary" size="large" @click="saveComment">发表评论</mt-button>
 
         <ul>
             <li v-for="(item, index) in comments" :key="item.id">
                 <div>
-                    第{{index+1}}楼&nbsp;&nbsp;用户名：{{item.name}}&nbsp;&nbsp;时间：{{item.add_time}}
+                    第{{index+1}}楼&nbsp;&nbsp;用户名id：{{item.user_id}}&nbsp;&nbsp;时间：{{item.add_time | dateFromat()}}
                 </div>
                 <p>{{item.content}}</p>
             </li>
@@ -29,72 +29,66 @@
         data() {
             return {
                 comments: [],
+                newsid: this.$route.params.id,
+                contents: '',
+                pages:0
             }
         },
+        props: ['type'],
         created() {
-            this.getNewsComments()
+            this.getNewsComments(0)
         },
         methods: {
-            getNewsComments() {
-                console.log("获取新闻详情评论")
-                this.$http.get("api/v1/news/comments").then(result => {
+            getNewsComments(pages) {
+                this.$http.get("api/v1/news/comments/1/" + this.newsid+"/"+pages+"/"+this.type).then(result => {
                     console.log("获取新闻详情评论")
                     if (result.status === 200) {
                         //成功获取数据
                         Toast("网络正常");
-                        // this.comments = result.body
+                        this.comments = result.body
                     } else {
                         //获取数据失败
                         Toast("网络异常");
                     }
                 })
-                this.comments = [{
-                    "id": 1,
-                    "name": "周彬彬",
-                    "add_time": "2012-12-12 12:12:12",
-                    "content": "锄禾日当午 汗滴禾下土 谁知盘中餐 粒粒皆辛苦"
-                },
-                    {
-                        "id": 1,
-                        "name": "周彬彬",
-                        "add_time": "2012-12-12 12:12:12",
-                        "content": "锄禾日当午 汗滴禾下土 谁知盘中餐 粒粒皆辛苦"
-                    },
-                    {
-                        "id": 1,
-                        "name": "周彬彬",
-                        "add_time": "2012-12-12 12:12:12",
-                        "content": "锄禾日当午 汗滴禾下土 谁知盘中餐 粒粒皆辛苦"
-                    },
-                    {
-                        "id": 1,
-                        "name": "周彬彬",
-                        "add_time": "2012-12-12 12:12:12",
-                        "content": "锄禾日当午 汗滴禾下土 谁知盘中餐 粒粒皆辛苦"
-                    },
-                    {
-                        "id": 1,
-                        "name": "周彬彬",
-                        "add_time": "2012-12-12 12:12:12",
-                        "content": "锄禾日当午 汗滴禾下土 谁知盘中餐 粒粒皆辛苦"
-                    },
-                    {
-                        "id": 1,
-                        "name": "周彬彬",
-                        "add_time": "2012-12-12 12:12:12",
-                        "content": "锄禾日当午 汗滴禾下土 谁知盘中餐 粒粒皆辛苦"
-                    },
-                    {
-                        "id": 1,
-                        "name": "周彬彬",
-                        "add_time": "2012-12-12 12:12:12",
-                        "content": "锄禾日当午 汗滴禾下土 谁知盘中餐 粒粒皆辛苦"
-                    }]
-
             },
-            getMoreNewsComments() {
-                console.log("加载更多")
-
+            getMoreNewsComments(pages) {
+                console.log("加载更多");
+                this.pages++;
+                pages = this.pages;
+                this.$http.get("api/v1/news/comments/1/" + this.newsid+"/"+pages+"/"+this.type).then(result => {
+                    console.log("获取新闻详情评论")
+                    if (result.status === 200) {
+                        //成功获取数据
+                        Toast("网络正常");
+                        this.comments = this.comments.concat(result.body)
+                    } else {
+                        //获取数据失败
+                        Toast("网络异常");
+                    }
+                })
+            },
+            saveComment() {
+                console.log("增加评论");
+                console.log(new Date());
+                this.$http.post("api/v1/news/comments", {
+                    type: this.type,
+                    user_id: 1,
+                    content: this.contents,
+                    add_time: new Date().getTime(),
+                    news_id: this.newsid
+                }, {emulateJSON: true}).then(result => {
+                    console.log("获取新闻详情评论");
+                    if (result.status === 200) {
+                        //成功获取数据
+                        Toast("网络正常");
+                        this.getNewsComments(0);
+                        this.contents=''
+                    } else {
+                        //获取数据失败
+                        Toast("网络异常");
+                    }
+                })
             }
         }
     }

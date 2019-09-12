@@ -8,7 +8,7 @@
         <hr/>
         <p>{{news.content}}</p>
 
-        <news-comment></news-comment>
+        <news-comment :type="1"></news-comment>
     </div>
 </template>
 <!--api/v1/news/1-->

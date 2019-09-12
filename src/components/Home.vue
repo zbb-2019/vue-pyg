@@ -20,10 +20,12 @@
                     <div class="mui-media-body">图片分享</div>
                 </router-link>
             </li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
-                <img src="../../public/img/icons/apple-touch-icon-120x120.png">
-                <div class="mui-media-body">商品购买</div>
-            </a></li>
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/goods">
+                    <img src="../../public/img/icons/apple-touch-icon-120x120.png">
+                    <div class="mui-media-body">商品购买</div>
+                </router-link>
+            </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                 <img src="../../public/img/icons/apple-touch-icon-120x120.png">
                 <div class="mui-media-body">留言反馈</div>
@@ -80,12 +82,15 @@
             &:nth-child(1) {
                 background-color: red;
             }
+
             &:nth-child(2) {
                 background-color: yellow;
             }
+
             &:nth-child(3) {
                 background-color: green;
             }
+
             img {
                 width: 100%;
                 height: 100%;
@@ -101,7 +106,9 @@
         div {
             font-size: 12px;
         }
+
         border: none;
+
         img {
             width: 60px;
             height: 60px;
