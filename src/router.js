@@ -10,8 +10,10 @@ import SharePicture from './components/SharePicture';
 import SharePictureInfo from './components/SharePictureInfo';
 import Goods from './components/Goods';
 import GoodsInfo from './components/GoodsInfo';
+import GoodsGraphicIntroduction from './components/GoodsGraphicIntroduction';
+import GoodsGoodsComments from './components/GoodsGoodsComments';
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
     mode: 'history',
@@ -24,6 +26,8 @@ export default new Router({
         {path: '/home/share-picture', name: 'SharePicture', component: SharePicture,},
         {path: '/home/share-picture-info/:id', name: 'SharePictureInfo', component: SharePictureInfo,},
         {path: '/home/goods', name: 'Goods', component: Goods,},
+        {path: '/home/goods-graphic-introduction/:id', name: 'GoodsGraphicIntroduction', component: GoodsGraphicIntroduction,},
+        {path: '/home/goods-goods-comments/:id', name: 'GoodsGoodsComments', component: GoodsGoodsComments,},
         {path: '/home/goods-info/:id', name: 'GoodsInfo', component: GoodsInfo,},
         {path: '/search', name: 'Search', component: Search},
         {path: '/shopcar', name: 'Shopcar', component: Shopcar},

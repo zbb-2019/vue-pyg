@@ -9,7 +9,6 @@
             </div>
         </div>
 
-
         <div class="mui-card">
             <div class="mui-card-header">{{goodsInfo.title}}</div>
             <div class="mui-card-content">
@@ -39,8 +38,12 @@
                 </div>
             </div>
             <div class="mui-card-footer">
+                <router-link :to="'/home/goods-graphic-introduction/'+goodsInfo.id">
                 <mt-button class="ymj" type="primary" size="large" plain>图文介绍</mt-button>
+                </router-link>
+                <router-link :to="'/home/goods-goods-comments/'+goodsInfo.id">
                 <mt-button class="ymj" type="danger" size="large" plain>商品评论</mt-button>
+                </router-link>
             </div>
         </div>
     </div>
