@@ -9,6 +9,7 @@ import NewsInfo from './components/NewsInfo';
 import SharePicture from './components/SharePicture';
 import SharePictureInfo from './components/SharePictureInfo';
 import Goods from './components/Goods';
+import GoodsInfo from './components/GoodsInfo';
 
 Vue.use(Router)
 
@@ -23,6 +24,7 @@ export default new Router({
         {path: '/home/share-picture', name: 'SharePicture', component: SharePicture,},
         {path: '/home/share-picture-info/:id', name: 'SharePictureInfo', component: SharePictureInfo,},
         {path: '/home/goods', name: 'Goods', component: Goods,},
+        {path: '/home/goods-info/:id', name: 'GoodsInfo', component: GoodsInfo,},
         {path: '/search', name: 'Search', component: Search},
         {path: '/shopcar', name: 'Shopcar', component: Shopcar},
         {path: '/member', name: 'Member', component: Member}
