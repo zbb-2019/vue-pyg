@@ -1,12 +1,16 @@
 <template>
     <div>
-        <h3>商品评论</h3>
+        <comment :type="3"></comment>
     </div>
 </template>
 
 <script>
+    import Comment from './Comment'
     export default {
-        name: "GoodsGoodsComments"
+        name: "GoodsGoodsComments",
+        components:{
+            comment:Comment
+        }
     }
 </script>
 
