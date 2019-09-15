@@ -27,7 +27,7 @@
                         <del>￥{{goodsInfo.market_price}}</del>&nbsp;&nbsp;销售价：<span class="now_price">￥{{goodsInfo.sell_price}}</span>
                     </p>
                     <p>购买数量：
-                        <numbox></numbox>
+                        <numbox :max="goodsInfo.stock_quantity" @getCount="getCount"></numbox>
                     </p>
                     <p>
                         <mt-button type="primary" size="small">立即购买</mt-button>
@@ -75,6 +75,7 @@
                 lunbotulist: [],
                 goodsInfo: {},
                 ballflage: false,
+                count: 1,
             }
         },
         methods: {
@@ -107,6 +108,15 @@
             },
             addShop() {
                 this.ballflage = !this.ballflage;
+                //组装购物车数据
+                const car = {
+                    id: this.goodsInfo.id,
+                    count: this.count,
+                    price: this.goodsInfo.sell_price,
+                    selected: 1
+                }
+                //追加到stroe中
+                this.$store.commit("addGoods", car);
             },
             beforeEnter: function (el) {
                 el.style.transform = "translate(0, 0)";
@@ -120,12 +130,15 @@
                 const badgepostion = document.getElementById("badge").getBoundingClientRect();
                 const xDist = badgepostion.left - ballpostion.left;
                 const yDist = badgepostion.top - ballpostion.top;
-                el.style.transform = "translate("+xDist+"px, "+yDist+"px)";
+                el.style.transform = "translate(" + xDist + "px, " + yDist + "px)";
                 el.style.transition = "all .5s cubic-bezier(.4,-0.3,1,.68)";
                 done()
             },
             afterEnter: function (el) {
                 this.ballflage = !this.ballflage;
+            },
+            getCount(data) {
+                this.count = data;
             },
         },
         components: {

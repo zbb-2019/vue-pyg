@@ -17,7 +17,6 @@ import VuePreview from 'vue-preview'
 Vue.use(MintUI);
 Vue.use(VueResource);
 
-
 // defalut install
 Vue.use(VuePreview)
 
@@ -40,10 +39,14 @@ Vue.filter('dateFromat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
     return moment(dataStr).format(pattern)
 });
 
+store.state.cars = JSON.parse(localStorage.getItem("cars") || "[]");
+
 Vue.config.productionTip = false
 
 new Vue({
     router,
     store,
     render: h => h(App)
-}).$mount('#app')
+}).$mount('#app');
+
+

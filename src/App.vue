@@ -18,7 +18,9 @@
                 <span class="mui-tab-label">会员</span>
             </router-link>
             <router-link class="mui-tab-item-zbb" to="/shopcar">
-                <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span id="badge" class="mui-badge">0</span></span>
+                <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
+                    <span id="badge" class="mui-badge">{{$store.getters.getAllGoodsCount}}</span>
+                </span>
                 <span class="mui-tab-label">购物车</span>
             </router-link>
             <router-link class="mui-tab-item-zbb" to="/search">
@@ -29,6 +31,7 @@
     </div>
 </template>
 
+
 <style scoped lang="scss">
     #app {
         padding-top: 40px;
@@ -37,10 +40,12 @@
 
     div {
         overflow-x: hidden;
+
         .v-enter, .v-leave-to {
             opacity: 0;
             transform: translateX(100%);
         }
+
         .v-leave-to {
             opacity: 0;
             transform: translateX(-100%);
