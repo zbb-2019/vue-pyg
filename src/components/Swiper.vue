@@ -11,7 +11,7 @@
 <script>
     export default {
         name: "Swiper",
-        props:["lunbotulist"],
+        props: ["lunbotulist"],
         data() {
             return {
                 baseHttp: this.$http.options.root
@@ -24,23 +24,23 @@
     .mint-swipe {
         height: 200px;
 
-    .mint-swipe-item {
-    &:nth-child(1) {
-         background-color: red;
-     }
+        .mint-swipe-item {
+            &:nth-child(1) {
+                background-color: red;
+            }
 
-    &:nth-child(2) {
-         background-color: yellow;
-     }
+            &:nth-child(2) {
+                background-color: yellow;
+            }
 
-    &:nth-child(3) {
-         background-color: green;
-     }
+            &:nth-child(3) {
+                background-color: green;
+            }
 
-    img {
-        width: 100%;
-        height: 100%;
-    }
-    }
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
     }
 </style>

@@ -68,8 +68,8 @@
                 });
             }
         },
-        components:{
-            swiper:Swiper,
+        components: {
+            swiper: Swiper,
         }
     }
 </script>

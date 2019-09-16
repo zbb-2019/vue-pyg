@@ -14,6 +14,7 @@ import './lib/mui/css/icons-extra.css';
 import VueResource from 'vue-resource';
 import moment from 'moment';
 import VuePreview from 'vue-preview'
+
 Vue.use(MintUI);
 Vue.use(VueResource);
 

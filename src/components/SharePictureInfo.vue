@@ -40,7 +40,7 @@
         },
         created() {
             this.getSharePictureInfoById(),
-            this.getSharePictureInfoThumbnail()
+                this.getSharePictureInfoThumbnail()
         },
         methods: {
             getSharePictureInfoById() {
@@ -56,10 +56,10 @@
                     }
                 });
             },
-            handleClose(){
+            handleClose() {
                 console.log("关闭缩略图")
             },
-            getSharePictureInfoThumbnail(){
+            getSharePictureInfoThumbnail() {
                 this.$http.get("api/v1/sharepictureinfo2/" + this.id).then(result => {
                     console.log("根据id获取分享缩略图片");
                     if (result.status === 200) {

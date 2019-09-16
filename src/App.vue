@@ -42,10 +42,10 @@
                 flag: false,
             };
         },
-        created(){
+        created() {
             if (this.$router.path === '/home') {
                 this.flag = false;
-            }else {
+            } else {
                 this.flag = true;
             }
         },
@@ -58,7 +58,7 @@
             '$route.path': function (newValue) {
                 if (newValue === '/home') {
                     this.flag = false;
-                }else {
+                } else {
                     this.flag = true;
                 }
             }
