@@ -3,7 +3,7 @@
         <ul>
             <router-link :to="'/home/goods-info/'+item.id" v-for="item in goods" :key="item.id" tag="li">
                 <div class="show">
-                    <img :src="item.img_url" alt="商品图片"/>
+                    <img :src="baseHttp+item.img_url" alt="商品图片"/>
                     <h3>{{ item.title }}</h3>
                     <p>{{ item.zhaiyao }}</p>
                 </div>
@@ -26,7 +26,8 @@
         data() {
             return {
                 goods: [],
-                pages: 0
+                pages: 0,
+                baseHttp: this.$http.options.root
             }
         },
         created() {

@@ -7,7 +7,7 @@
                          :class="{ 'mui-active': item.selected }">
                         <div class="mui-switch-handle"></div>
                     </div>
-                    <img :src="item.img"/>
+                    <img :src="baseHttp+item.img"/>
                     <div class="ri">
                         <h3>{{item.title}}</h3>
                         <span>￥{{item.price}}</span>
@@ -43,6 +43,7 @@
         data() {
             return {
                 cars: [],
+                baseHttp: this.$http.options.root
             }
         },
         created() {
@@ -72,7 +73,8 @@
                         margin-top: 16px;
                     }
                     img {
-                        width: 20%;
+                        width: 10%;
+                        height: 10%;
                         padding: 4px;
                     }
                     .ri {

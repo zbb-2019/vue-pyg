@@ -20,7 +20,7 @@
         <ul class="picture-list">
             <li v-for="item in list" :key="item.id">
                 <RouterLink :to="'/home/share-picture-info/'+item.id">
-                    <img v-lazy="item.img_url">
+                    <img v-lazy="baseHttp+item.img_url">
                 </RouterLink>
                 <div>
                     <h4>{{item.title}}</h4>
@@ -42,6 +42,7 @@
             return {
                 clazzs: [],//图片分类数据
                 list: [],//图片列表数据
+                baseHttp: this.$http.options.root
             }
         },
         created() {

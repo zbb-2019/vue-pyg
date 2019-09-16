@@ -2,7 +2,7 @@
     <div>
         <mt-swipe :auto="4000">
             <mt-swipe-item v-for="item in lunbotulist" :key="item.id">
-                <img :src="item.img"/>
+                <img :src="baseHttp+item.img"/>
             </mt-swipe-item>
         </mt-swipe>
     </div>
@@ -11,7 +11,12 @@
 <script>
     export default {
         name: "Swiper",
-        props:["lunbotulist"]
+        props:["lunbotulist"],
+        data() {
+            return {
+                baseHttp: this.$http.options.root
+            }
+        },
     }
 </script>
 

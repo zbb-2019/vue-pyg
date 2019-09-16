@@ -32,7 +32,7 @@ Vue.use(VuePreview)
 //     tapToToggleControls: false
 // })
 
-Vue.http.options.root = 'http://127.0.0.1:7001/';
+Vue.http.options.root = 'http://192.168.5.211:7001/';
 
 //定义全局时间过滤器-格式化时间
 Vue.filter('dateFromat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {

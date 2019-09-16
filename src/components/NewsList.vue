@@ -3,7 +3,7 @@
         <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media" v-for="item in newslist" :key="item.id">
                 <router-link :to="'/home/news-info/'+item.id">
-                    <img class="mui-media-object mui-pull-left" :src="item.img_url">
+                    <img class="mui-media-object mui-pull-left" :src="baseHttp+item.img_url">
                     <div class="mui-media-body">
                         {{item.title}}
                         <p class='mui-ellipsis'><span>发表时间：{{item.add_time | dateFromat()}} </span>
@@ -22,7 +22,8 @@
         name: "NewsList",
         data() {
             return {
-                newslist: []
+                newslist: [],
+                baseHttp: this.$http.options.root
             }
         },
         created() {
@@ -30,6 +31,7 @@
         },
         methods: {
             getNewsList() {
+                console.log(this.$http.options.root)
                 this.$http.get("api/v1/newslist").then(result => {
                     console.log('新闻列表');
                     if (result.status === 200) {
