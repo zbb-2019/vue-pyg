@@ -109,11 +109,14 @@
             addShop() {
                 this.ballflage = !this.ballflage;
                 //组装购物车数据
-                const car = {
+                let car = {
                     id: this.goodsInfo.id,
                     count: this.count,
                     price: this.goodsInfo.sell_price,
-                    selected: 1
+                    selected: true,
+                    title: this.goodsInfo.title,
+                    img: this.goodsInfo.img_url,
+                    max: this.goodsInfo.stock_quantity,
                 }
                 //追加到stroe中
                 this.$store.commit("addGoods", car);

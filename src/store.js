@@ -21,18 +21,50 @@ export default new Vuex.Store({
             if (!flag) {
                 state.cars.push(car);
             }
-            localStorage.setItem("cars",JSON.stringify(state.cars));
+            localStorage.setItem("cars", JSON.stringify(state.cars));
+        },
+        updateGoods(state, id) {
+            state.cars.some(item => {
+                if (item.id === id) {
+                    item.selected = !item.selected;
+                    return true;
+                }
+            });
+            localStorage.setItem("cars", JSON.stringify(state.cars));
+        },
+        updateGoodsCount(state, car) {
+            state.cars.some(item => {
+                if (item.id === car.id) {
+                    item.count = car.count;
+                    return true;
+                }
+            });
+            localStorage.setItem("cars", JSON.stringify(state.cars));
         }
 
     },
     actions: {},
-    getters:{
-        getAllGoodsCount(state){
+    getters: {
+        getAllGoodsCount(state) {
             let c = 0;
             state.cars.forEach(item => {
                 c += item.count;
-            })
+            });
             return c;
-        }
+        },
+        getAllGoodsAllCount(state) {
+            let c = {
+                allCount: 0,
+                allPrice: 0
+            };
+            state.cars.forEach(item => {
+                if (item.selected) {
+                    c.allCount += item.count;
+                    c.allPrice += item.count * item.price;
+                }
+            });
+            return c;
+        },
+
     }
 })
