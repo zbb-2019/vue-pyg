@@ -1,7 +1,11 @@
 <template>
     <div id="app">
         <!--顶部区域-->
-        <mt-header fixed title="vue，品优购项目开发"></mt-header>
+        <mt-header fixed title="vue，品优购项目开发">
+            <span slot="left" @click="goBack" v-show="this.flag">
+                <mt-button icon="back">返回</mt-button>
+            </span>
+        </mt-header>
 
         <!--中间路由区域-->
         <transition mode="out-in">
@@ -31,6 +35,36 @@
     </div>
 </template>
 
+<script>
+    export default {
+        data() {
+            return {
+                flag: false,
+            };
+        },
+        created(){
+            if (this.$router.path === '/home') {
+                this.flag = false;
+            }else {
+                this.flag = true;
+            }
+        },
+        methods: {
+            goBack() {
+                this.$router.go(-1)
+            }
+        },
+        watch: {
+            '$route.path': function (newValue) {
+                if (newValue === '/home') {
+                    this.flag = false;
+                }else {
+                    this.flag = true;
+                }
+            }
+        }
+    }
+</script>
 
 <style scoped lang="scss">
     #app {
